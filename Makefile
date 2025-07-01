@@ -1,21 +1,26 @@
 CC = gcc
-RAYLIB = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+LIB = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
-LIBS = -lm
 
-main: main.c
-	$(CC) -rdynamic -o main main.c -ldl $(RAYLIB)
+main_reload: main_reload.c
+	$(CC) -rdynamic -o main_reload main_reload.c -ldl $(LIB)
 
 plugin.so: plugin.c
 	$(CC) -fPIC -shared -o plugin.so plugin.c
 
-run: main plugin.so
-	./main
+run: main_reload plugin.so
+	./main_reload
 
 tests: ./test_*.c
-	@echo Compiling $@
-	@$(CC) unity.c ./test_*.c -o tests.out $(LIBS)
+	clear
+	@$(CC) unity.c ./test_*.c -o tests.out $(LIB)
 	@./tests.out
+	@rm tests.out
+
+tests-run:
+	@$(CC) main_test.c -o main-test $(LIB)
+	@./main-test
+
 
 clean:
-	rm -rf main plugin.so *.o *.out *.out.dSYM
+	rm -rf main_reload plugin.so *.o *.out *.out.dSYM

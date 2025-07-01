@@ -6,7 +6,7 @@ void plugin_init(void) {
   SetTargetFPS(60);
   printf("Plugin initialized\n");
 }
-void plugin_update(void) { printf("Plugin test\n"); }
+void plugin_update(void) { printf("Plugin Update\n"); }
 
 void plugin_render(void) {
   BeginDrawing();
