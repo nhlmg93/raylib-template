@@ -8,8 +8,8 @@ main-reload: main_reload.c
 plugin.so: plugin.c
 	$(CC) -fPIC -shared -o plugin.so plugin.c
 
-run: main_reload plugin.so
-	./main_reload
+run: main-reload plugin.so
+	./main-reload
 
 tests: ./test_*.c
 	clear
