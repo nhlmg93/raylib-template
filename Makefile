@@ -2,8 +2,8 @@ CC = gcc
 LIB = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
 
-main_reload: main_reload.c
-	$(CC) -rdynamic -o main_reload main_reload.c -ldl $(LIB)
+main-reload: main_reload.c
+	$(CC) -rdynamic -o main-reload main_reload.c -ldl $(LIB)
 
 plugin.so: plugin.c
 	$(CC) -fPIC -shared -o plugin.so plugin.c
@@ -23,4 +23,4 @@ tests-run:
 
 
 clean:
-	rm -rf main_reload plugin.so *.o *.out *.out.dSYM
+	rm -rf main-reload main-test plugin.so *.o *.out *.out.dSYM
