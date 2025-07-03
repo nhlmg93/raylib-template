@@ -1,11 +1,10 @@
 CC = gcc
 LIB = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 
-
-main-reload: main_reload.c
+main-reload: main_reload.c plugin.h
 	$(CC) -rdynamic -o main-reload main_reload.c -ldl $(LIB)
 
-plugin.so: plugin.c
+plugin.so: plugin.c plugin.h
 	$(CC) -fPIC -shared -o plugin.so plugin.c
 
 run: main-reload plugin.so

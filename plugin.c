@@ -1,17 +1,28 @@
+#include "plugin.h"
 #include <raylib.h>
 #include <stdio.h>
 
-void plugin_init(void) {
-  InitWindow(800, 600, "Hot Reload");
+void plugin_init(GameState *state) {
+  SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+  InitWindow(1200, 800, "Hot Reload");
   SetTargetFPS(60);
+
+  // Initialize game state
+  state->foo_t = 600;
+
   printf("Plugin initialized\n");
 }
-void plugin_update(void) { printf("Plugin Update\n"); }
 
-void plugin_render(void) {
+void plugin_update(GameState *state) {
+  printf("Plugin test- Score: %d\n", state->foo_t);
+}
+
+void plugin_render(GameState *state) {
   BeginDrawing();
   ClearBackground(BLACK);
-  DrawCircle(500, 300, 50, RED);
-  DrawText("TEST!", 100, 100, 20, WHITE);
+
+
+  DrawText("We are working", 10, 10, 20, WHITE);
+
   EndDrawing();
 }
