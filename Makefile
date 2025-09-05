@@ -12,3 +12,4 @@ run: dev plugin.so
 
 clean:
 	rm -rf build
+	mkdir build/
