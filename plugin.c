@@ -8,7 +8,7 @@ void plugin_init(GameState *state) {
   SetTargetFPS(60);
 
   // Initialize game state
-  state->foo_t = 600;
+  state->foo_t = 500;
 
   printf("Plugin initialized\n");
 }

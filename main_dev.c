@@ -26,7 +26,7 @@ int main() {
     }
 
     system("make -s plugin.so");
-    lib = dlopen("./plugin.so", RTLD_LAZY);
+    lib = dlopen("./build/plugin.so", RTLD_LAZY);
     if (lib) {
         plugin_init = dlsym(lib, "plugin_init");
         plugin_update = dlsym(lib, "plugin_update");
@@ -44,7 +44,7 @@ int main() {
                 if (lib)
                     dlclose(lib);
                 system("make -s plugin.so");
-                lib = dlopen("./plugin.so", RTLD_LAZY);
+                lib = dlopen("./build/plugin.so", RTLD_LAZY);
                 if (lib) {
                     plugin_update = dlsym(lib, "plugin_update");
                     plugin_render = dlsym(lib, "plugin_render");
