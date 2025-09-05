@@ -5,6 +5,10 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 
+// FEATURE: handle multiple files from a directory (do i need to do this?)
+// FEATURE: work with multiple directories(cmd, lib, build, assets, etc)
+// FEATURE: better error handling(asserts!)
+
 time_t get_time(const char *file) {
     struct stat st;
     return stat(file, &st) == 0 ? st.st_mtime : 0;
